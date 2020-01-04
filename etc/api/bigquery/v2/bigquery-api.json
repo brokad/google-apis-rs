@@ -432,11 +432,41 @@
                         "https://www.googleapis.com/auth/cloud-platform", 
                         "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
-                }, 
+                },
                 "insert": {
-                    "description": "Starts a new asynchronous job. Requires the Can View project role.", 
+                    "description": "Starts a new asynchronous job. Requires the Can View project role. For metadata-only requests.", 
                     "httpMethod": "POST", 
                     "id": "bigquery.jobs.insert", 
+                    "parameterOrder": [
+                        "projectId"
+                    ], 
+                    "parameters": {
+                        "projectId": {
+                            "description": "Project ID of the project that will be billed for the job", 
+                            "location": "path", 
+                            "required": true, 
+                            "type": "string"
+                        }
+                    }, 
+                    "path": "projects/{projectId}/jobs", 
+                    "request": {
+                        "$ref": "Job"
+                    },
+                    "response": {
+                        "$ref": "Job"
+                    }, 
+                    "scopes": [
+                        "https://www.googleapis.com/auth/bigquery", 
+                        "https://www.googleapis.com/auth/cloud-platform", 
+                        "https://www.googleapis.com/auth/devstorage.full_control", 
+                        "https://www.googleapis.com/auth/devstorage.read_only", 
+                        "https://www.googleapis.com/auth/devstorage.read_write"
+                    ]
+                },
+                "upload": {
+                    "description": "[This is not an official BigQuery api method.] Starts a new asynchronous job. Requires the Can View project role. The Upload URI is ONLY for the case when you're sending both a load job configuration and a data stream together. For metadata-only requests (such as query jobs or load jobs not involving uploading data directly), use 'bigquery.jobs.insert' instead.", 
+                    "httpMethod": "POST", 
+                    "id": "bigquery.jobs.upload", 
                     "mediaUpload": {
                         "accept": [
                             "*/*"
